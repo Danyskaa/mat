@@ -27,19 +27,13 @@ headers = {
     'x-requested-with': 'org.telegram.messenger.web'
 }
 
-def get_balance(token):
-    url = 'https://api-web.tomarket.ai/tomarket-game/v1/user/balance'
-    headers['Authorization'] = token
-    try:
-        response = requests.post(url, headers=headers)
-        response.raise_for_status()
-        return response.json()
-    except json.JSONDecodeError:
-        print(f"JSON Decode Error: Token Invalid")
-        return None
-    except requests.RequestException as e:
-        print(f"Request Error: {e}")
-        return None
+def balance_user(self, token: str, first_name: str):
+        url = 'https://api-web.tomarket.ai/tomarket-game/v1/user/balance'
+        headers = {
+            **self.headers,
+            'Authorization': token,
+            'Content-Length': '0'
+        }
 
 def claim_daily(token):
     url = 'https://api-web.tomarket.ai/tomarket-game/v1/daily/claim'
