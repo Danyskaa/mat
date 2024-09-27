@@ -33,7 +33,7 @@ def balance_user(self, token: str, first_name: str):
             **self.headers,
             'Authorization': token,
             'Content-Length': '0'
-        }
+    
 
 def claim_daily(token):
     url = 'https://api-web.tomarket.ai/tomarket-game/v1/daily/claim'
